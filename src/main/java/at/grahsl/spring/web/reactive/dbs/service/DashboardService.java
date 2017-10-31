@@ -96,7 +96,7 @@ public class DashboardService {
 
     public Flux<ExerciseEvent> consumeExerciseEventStream(String id) {
         return exerciseEventFlux.filter(ee -> ee.getExerciseId().equals(id))
-                .doOnNext(System.out::println);
+                .doOnNext(ee -> LOGGER.debug("SSE to client -> " + ee.toString()));
     }
 
 }
